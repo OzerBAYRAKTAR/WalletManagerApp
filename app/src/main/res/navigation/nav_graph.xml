@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/historyFragment">
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.walletmanagerapplication.view.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_analyticsFragment"
+            app:destination="@id/analyticsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/analyticsFragment"
+        android:name="com.example.walletmanagerapplication.view.AnalyticsFragment"
+        android:label="fragment_analytics"
+        tools:layout="@layout/fragment_analytics" />
+    <fragment
+        android:id="@+id/recordFragment"
+        android:name="com.example.walletmanagerapplication.view.RecordFragment"
+        android:label="fragment_record"
+        tools:layout="@layout/fragment_record" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.walletmanagerapplication.view.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

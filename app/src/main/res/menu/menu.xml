@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/ic_history"
+        android:title="History" />
+    <item
+        android:id="@+id/analyticsFragment"
+        android:icon="@drawable/ic_piechart"
+        android:title="Analytics" />
+    <item
+        android:id="@+id/placeHolder"
+        android:title="" />
+    <item
+        android:id="@+id/recordFragment"
+        android:icon="@drawable/ic_report"
+        android:title="Report" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_acc"
+        android:title="Account" />
+
+</menu>

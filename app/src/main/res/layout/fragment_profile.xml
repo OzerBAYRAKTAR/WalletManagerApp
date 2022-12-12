@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/splash_background"
+    tools:context=".view.ProfileFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ACCOUNT"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textSize="45dp"
+        android:textColor="@color/black"/>
+
+
+
+    <TextView
+        android:id="@+id/profileAds"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#00BCD4"
+        android:text="Remove Ads"
+        android:textSize="27dp"
+        android:textAlignment="textStart"
+        android:gravity="center_vertical"
+        android:layout_marginTop="90dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:drawableLeft="@drawable/ic_adds24"
+        android:drawableRight="@drawable/ic_next"
+        android:paddingLeft="20dp"
+        android:drawablePadding="15dp"
+        android:textStyle="italic"
+        tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/profileFriends"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#00BCD4"
+        android:text="Share with your friends"
+        android:textSize="27dp"
+        android:drawablePadding="15dp"
+        android:textAlignment="textStart"
+        android:gravity="center_vertical"
+        android:layout_margin="20dp"
+        android:drawableLeft="@drawable/ic_share"
+        android:drawableRight="@drawable/ic_next"
+        android:paddingLeft="20dp"
+        android:textStyle="italic"
+        tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/profileRate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#00BCD4"
+        android:text="Rate Us"
+        android:textSize="27dp"
+        android:drawablePadding="15dp"
+        android:textAlignment="textStart"
+        android:gravity="center_vertical"
+        android:layout_margin="20dp"
+        android:drawableLeft="@drawable/ic_rate"
+        android:drawableRight="@drawable/ic_next"
+        android:paddingLeft="20dp"
+        android:textStyle="italic"
+        tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/profilePrivacy"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#00BCD4"
+        android:text="Private Privacy"
+        android:drawablePadding="15dp"
+        android:textSize="27dp"
+        android:textAlignment="textStart"
+        android:gravity="center_vertical"
+        android:layout_margin="20dp"
+        android:drawableLeft="@drawable/ic_check"
+        android:drawableRight="@drawable/ic_next"
+        android:paddingLeft="20dp"
+        android:textStyle="italic"
+        tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/profileAbout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:drawablePadding="15dp"
+        android:text="About Us"
+        android:textSize="27dp"
+        android:textAlignment="textStart"
+        android:gravity="center_vertical"
+        android:layout_margin="20dp"
+        android:drawableLeft="@drawable/ic_question"
+        android:drawableRight="@drawable/ic_next"
+        android:paddingLeft="20dp"
+        android:textStyle="italic"
+        tools:ignore="RtlCompat" />
+
+
+
+
+
+
+
+</LinearLayout>
