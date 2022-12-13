@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:layout_marginBottom="5dp"
     android:clickable="true"
     android:background="?selectableItemBackground">
 
@@ -13,17 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#333131"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="7dp" />
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="72dp" />
 
     <ImageView
         android:id="@+id/imageHistory"
-        android:layout_width="42dp"
+        android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_araba"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,8 +36,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
+        android:textColor="@color/black"
         android:text="Car Wash"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/imageHistory"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="₺16"
-        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toEndOf="@+id/labelHistory"

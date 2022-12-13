@@ -3,7 +3,11 @@ package com.example.walletmanagerapplication.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.data.model.Transaction
 import com.example.walletmanagerapplication.databinding.ItemHistoryBinding
 import com.example.walletmanagerapplication.util.glideImage
@@ -12,27 +16,31 @@ class TransactionAdapter(private val transactions:ArrayList<Transaction>) : Recy
 
 
 
-   class TranscationHolder(private val binding:ItemHistoryBinding) :RecyclerView.ViewHolder(binding.root){
+   class TranscationHolder(view : View) :RecyclerView.ViewHolder(view){
+       val label=view.findViewById<TextView>(R.id.labelHistory)
+       val amount=view.findViewById<TextView>(R.id.amountHistory)
+       val image=view.findViewById<ImageView>(R.id.imageHistory)
 
-    fun bind(item: Transaction) {
-        with(binding) {
-            with(item) {
-                labelHistory.text=label
-                amountHistory.text=amount.toString()
-                imageHistory.glideImage(image)
-
-            }
-        }
-    }
    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TranscationHolder {
-        val binding=ItemHistoryBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return TranscationHolder(binding)
+        val view=LayoutInflater.from(parent.context).inflate(R.layout.item_history,parent,false)
+        return TranscationHolder(view)
     }
 
     override fun onBindViewHolder(holder: TranscationHolder, position: Int) {
         val transcation =transactions[position]
+        val context=holder.amount.context
+
+        if (transcation.amount >= 0) {
+            holder.amount.text="+ ₺%.2f".format(transcation.amount)
+            holder.amount.setTextColor(ContextCompat.getColor(context,R.color.green))
+        }else{
+            holder.amount.text="- ₺%.2f".format(Math.abs(transcation.amount))
+            holder.amount.setTextColor(ContextCompat.getColor(context,R.color.red))
+        }
+        holder.label.text=transcation.label
+        holder.image.setImageDrawable(context.getDrawable(transcation.image))
     }
 
     override fun getItemCount(): Int {
