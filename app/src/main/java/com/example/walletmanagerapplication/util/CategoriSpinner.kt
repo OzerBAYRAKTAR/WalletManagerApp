@@ -43,6 +43,7 @@ object Categories{
         "Elektronik",
         "FastFood",
         "Evcil Hayvan",
+        "İçecek",
         "Konut",
         "Sağlık",
         "Hediye",
@@ -56,19 +57,21 @@ object Categories{
         "Toplu Taşıma",
         "Yolculuk",
     )
-    var list: ArrayList<Categori>?=null
-    get(){
-        if (field!=null)
+    var list: ArrayList<Categori>? = null
+        get() {
+
+            if (field != null)
+                return field
+
+            field = ArrayList()
+            for (i in images.indices) {
+
+                val imageId = images[i]
+                val countryName = categories[i]
+
+                val country = Categori(imageId, countryName)
+                field!!.add(country)
+            }
             return field
-
-        field=ArrayList()
-        for (i in images.indices) {
-            val imageId= images[i]
-            val categoriName= categories[i]
-
-            val categori=Categori(imageId,categoriName)
-            field!!.add(categori)
         }
-        return field
-    }
 }

@@ -15,17 +15,17 @@ class CategoriArrayAdapter(context : Context, categoriList: List<Categori>) : Ar
 
     //getview defines the appearance of the spinner item when it is in closed state
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        return initView(position,convertView,parent)!!
+        return initView(position, convertView, parent)
     }
 
     //getDropDownView defines the appearance of spinner item when it is opened
-    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View? {
-        return initView(position,convertView,parent)
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+        return initView(position, convertView, parent)
     }
 
-    private fun initView(position: Int, convertView: View?, parent: ViewGroup): View? {
+    private fun initView(position: Int, convertView: View?, parent: ViewGroup): View {
         val categori = getItem(position)
-        val view = LayoutInflater.from(context).inflate(R.layout.spinner_item,parent,false)
+        val view =convertView ?: LayoutInflater.from(context).inflate(R.layout.spinner_item,parent,false)
 
         view.spinnerImage.setImageResource(categori!!.image)
         view.spinnerText.text=categori.name
