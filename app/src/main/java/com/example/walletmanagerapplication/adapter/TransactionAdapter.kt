@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.walletmanagerapplication.R
-import com.example.walletmanagerapplication.data.model.Transaction
-import com.example.walletmanagerapplication.databinding.ItemHistoryBinding
-import com.example.walletmanagerapplication.util.glideImage
+import com.example.walletmanagerapplication.data.RoomDb.Transaction
 
 class TransactionAdapter(private val transactions:ArrayList<Transaction>) : RecyclerView.Adapter<TransactionAdapter.TranscationHolder>() {
 

@@ -20,9 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setBackgroundResource(androidx.appcompat.R.drawable.abc_item_background_holo_dark)
 
-        setupCustomSpinner()
         intentFab()
-
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
@@ -38,10 +36,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun setupCustomSpinner() {
-        val adapter= CategoriArrayAdapter(this, Categories.list!!)
-        customSpinner.adapter=adapter
-    }
 
     fun replaceFragment(fragment: Fragment) {
         val fragmentManager=supportFragmentManager
