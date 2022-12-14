@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.walletmanagerapplication.view.HistoryFragment"
+        android:name="com.example.walletmanagerapplication.ui.History.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
         <action
@@ -16,17 +16,17 @@
     </fragment>
     <fragment
         android:id="@+id/analyticsFragment"
-        android:name="com.example.walletmanagerapplication.view.AnalyticsFragment"
+        android:name="com.example.walletmanagerapplication.ui.Analytics.AnalyticsFragment"
         android:label="fragment_analytics"
         tools:layout="@layout/fragment_analytics" />
     <fragment
         android:id="@+id/recordFragment"
-        android:name="com.example.walletmanagerapplication.view.RecordFragment"
+        android:name="com.example.walletmanagerapplication.ui.Record.RecordFragment"
         android:label="fragment_record"
         tools:layout="@layout/fragment_record" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.walletmanagerapplication.view.ProfileFragment"
+        android:name="com.example.walletmanagerapplication.ui.Profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

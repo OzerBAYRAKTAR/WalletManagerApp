@@ -1,4 +1,4 @@
-package com.example.walletmanagerapplication.view
+package com.example.walletmanagerapplication.ui.Profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

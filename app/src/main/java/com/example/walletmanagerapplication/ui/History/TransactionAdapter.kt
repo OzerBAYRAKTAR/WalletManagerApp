@@ -1,4 +1,4 @@
-package com.example.walletmanagerapplication.adapter
+package com.example.walletmanagerapplication.ui.History
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.data.RoomDb.Transaction
 
-class TransactionAdapter(private val transactions:ArrayList<Transaction>) : RecyclerView.Adapter<TransactionAdapter.TranscationHolder>() {
+class TransactionAdapter(private var transactions:List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.TranscationHolder>() {
 
 
 

@@ -1,14 +1,16 @@
-package com.example.walletmanagerapplication.view
+package com.example.walletmanagerapplication.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.walletmanagerapplication.R
-import com.example.walletmanagerapplication.adapter.CategoriArrayAdapter
 import com.example.walletmanagerapplication.databinding.ActivityMainBinding
-import com.example.walletmanagerapplication.util.Categories
-import kotlinx.android.synthetic.main.activity_add_transcation.*
+import com.example.walletmanagerapplication.ui.AddTranscactionActivity.AddTranscationActivity
+import com.example.walletmanagerapplication.ui.Analytics.AnalyticsFragment
+import com.example.walletmanagerapplication.ui.History.HistoryFragment
+import com.example.walletmanagerapplication.ui.Profile.ProfileFragment
+import com.example.walletmanagerapplication.ui.Record.RecordFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
@@ -45,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun intentFab() {
         binding.fabAdd.setOnClickListener {
-            val intent=Intent(this,AddTranscationActivity::class.java)
+            val intent=Intent(this, AddTranscationActivity::class.java)
             startActivity(intent)
         }
     }

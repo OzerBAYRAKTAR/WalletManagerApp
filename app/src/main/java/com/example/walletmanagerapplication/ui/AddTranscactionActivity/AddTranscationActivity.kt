@@ -1,10 +1,8 @@
-package com.example.walletmanagerapplication.view
+package com.example.walletmanagerapplication.ui.AddTranscactionActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
-import com.example.walletmanagerapplication.R
-import com.example.walletmanagerapplication.adapter.CategoriArrayAdapter
 import com.example.walletmanagerapplication.databinding.ActivityAddTranscationBinding
 import com.example.walletmanagerapplication.util.Categories
 import kotlinx.android.synthetic.main.activity_add_transcation.*
@@ -27,7 +25,7 @@ class AddTranscationActivity : AppCompatActivity() {
 
 
     private fun setupCustomSpinner() {
-        val adapter= CategoriArrayAdapter(this, Categories.list!!)
+        val adapter= CategoriSpinnerAdapter(this, Categories.list!!)
         customSpinner.adapter=adapter
     }
     private fun isEmpty() {

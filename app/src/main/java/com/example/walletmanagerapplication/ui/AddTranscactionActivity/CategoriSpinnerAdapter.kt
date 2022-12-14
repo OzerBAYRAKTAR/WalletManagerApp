@@ -1,4 +1,4 @@
-package com.example.walletmanagerapplication.adapter
+package com.example.walletmanagerapplication.ui.AddTranscactionActivity
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.util.Categori
 import kotlinx.android.synthetic.main.spinner_item.view.*
 
-class CategoriArrayAdapter(context : Context, categoriList: List<Categori>) : ArrayAdapter<Categori>(context, 0, categoriList) {
+class CategoriSpinnerAdapter(context : Context, categoriList: List<Categori>) : ArrayAdapter<Categori>(context, 0, categoriList) {
 
 
 
