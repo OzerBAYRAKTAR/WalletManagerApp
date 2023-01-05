@@ -6,7 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.walletmanagerapplication.R
-class AnalyticsFragment : Fragment(R.layout.fragment_analytics) {
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
+@AndroidEntryPoint
+class AnalyticsFragment @Inject constructor() : Fragment(R.layout.fragment_analytics) {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

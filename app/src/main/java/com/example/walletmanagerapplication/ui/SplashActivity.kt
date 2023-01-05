@@ -8,8 +8,11 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.databinding.ActivitySplashBinding
+import dagger.hilt.android.HiltAndroidApp
 import java.util.Timer
 import kotlin.concurrent.timerTask
+
+
 
 class SplashActivity : AppCompatActivity() {
 

@@ -8,8 +8,9 @@ import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.data.RoomDb.AppDataBase
 import com.example.walletmanagerapplication.data.RoomDb.Transaction
 import com.example.walletmanagerapplication.databinding.FragmentHistoryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HistoryFragment : Fragment(R.layout.fragment_history) {
     private lateinit var transactions: List<Transaction>
     private lateinit var transactionAdapter: TransactionAdapter

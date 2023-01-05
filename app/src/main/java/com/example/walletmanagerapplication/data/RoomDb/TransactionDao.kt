@@ -1,24 +1,23 @@
 package com.example.walletmanagerapplication.data.RoomDb
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
+import kotlinx.coroutines.flow.Flow
+
 
 
 @Dao
 interface TransactionDao {
 
-    @Query("SELECT * from transactions")
-    fun getAll(): List<Transaction>
+    @Query("SELECT * from transaction_table")
+    fun getTransactions(): Flow<List<Transaction>>
 
-    @Insert
-    fun insertAll(vararg transaction: Transaction)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(  transaction: Transaction)
 
     @Delete
-    fun delete(transaction: Transaction)
+    suspend fun delete(transaction: Transaction)
 
     @Update
-    fun update(vararg transaction: Transaction)
+    suspend fun update( transaction: Transaction)
 }

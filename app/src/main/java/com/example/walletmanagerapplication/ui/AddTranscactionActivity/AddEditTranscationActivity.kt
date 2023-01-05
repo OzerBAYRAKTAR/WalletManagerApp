@@ -2,12 +2,11 @@ package com.example.walletmanagerapplication.ui.AddTranscactionActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.widget.addTextChangedListener
 import com.example.walletmanagerapplication.databinding.ActivityAddTranscationBinding
-import com.example.walletmanagerapplication.util.Categories
-import kotlinx.android.synthetic.main.activity_add_transcation.*
+import dagger.hilt.android.AndroidEntryPoint
 
-class AddTranscationActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class AddEditTranscationActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityAddTranscationBinding
 
@@ -16,19 +15,11 @@ class AddTranscationActivity : AppCompatActivity() {
         binding=ActivityAddTranscationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupCustomSpinner()
-        isEmpty()
         finishTransaction()
 
-
     }
 
-
-    private fun setupCustomSpinner() {
-        val adapter= CategoriSpinnerAdapter(this, Categories.list!!)
-        customSpinner.adapter=adapter
-    }
-    private fun isEmpty() {
+    /* private fun isEmpty() {
         binding.labelInput.addTextChangedListener {
             if (it!!.isNotEmpty())
                 labelLayout.error=null
@@ -50,6 +41,8 @@ class AddTranscationActivity : AppCompatActivity() {
 
         }
     }
+
+     */
     private fun finishTransaction() {
         binding.closeBtn.setOnClickListener {
             finish()

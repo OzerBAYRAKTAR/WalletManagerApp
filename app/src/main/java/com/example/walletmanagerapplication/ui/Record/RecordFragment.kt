@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.walletmanagerapplication.R
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RecordFragment : Fragment(R.layout.fragment_record) {
 
     override fun onCreate(savedInstanceState: Bundle?) {

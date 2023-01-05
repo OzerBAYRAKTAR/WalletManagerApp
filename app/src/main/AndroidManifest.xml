@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".WalletManagerApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,28 +14,7 @@
         android:theme="@style/Theme.WalletManagerApplication"
         tools:targetApi="31">
         <activity
-            android:name=".AddTranscationActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity2423"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity2432"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.AddTranscactionActivity.AddTranscationActivity"
+            android:name=".ui.AddTranscactionActivity.AddEditTranscationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

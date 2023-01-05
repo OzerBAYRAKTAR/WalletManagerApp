@@ -6,12 +6,16 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.databinding.ActivityMainBinding
-import com.example.walletmanagerapplication.ui.AddTranscactionActivity.AddTranscationActivity
+import com.example.walletmanagerapplication.ui.AddTranscactionActivity.AddEditTranscationActivity
 import com.example.walletmanagerapplication.ui.Analytics.AnalyticsFragment
 import com.example.walletmanagerapplication.ui.History.HistoryFragment
 import com.example.walletmanagerapplication.ui.Profile.ProfileFragment
 import com.example.walletmanagerapplication.ui.Record.RecordFragment
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
 
@@ -47,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun intentFab() {
         binding.fabAdd.setOnClickListener {
-            val intent=Intent(this, AddTranscationActivity::class.java)
+            val intent=Intent(this, AddEditTranscationActivity::class.java)
             startActivity(intent)
         }
     }
