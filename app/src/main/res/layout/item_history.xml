@@ -40,7 +40,7 @@
                     android:layout_marginEnd="1dp"
                     android:layout_marginBottom="1dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_konut"
+                    android:src="@drawable/ic_close"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

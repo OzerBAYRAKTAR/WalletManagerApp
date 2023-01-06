@@ -2,4 +2,25 @@
     <string name="app_name">WalletManagerApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <string-array name="categories">
+        <item>Select Category</item>
+        <item>Shopping</item>
+        <item>Car</item>
+        <item>Baby</item>
+        <item>Beauty</item>
+        <item>Education</item>
+        <item>Electronic</item>
+        <item>FastFood</item>
+        <item>Pet</item>
+        <item>Drink</item>
+        <item>House</item>
+        <item>Furniture</item>
+        <item>Food</item>
+        <item>Health</item>
+        <item>Cigarette</item>
+        <item>Social</item>
+        <item>Travel</item>
+        <item>Other</item>
+    </string-array>
 </resources>

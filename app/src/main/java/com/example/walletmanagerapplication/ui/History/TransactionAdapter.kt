@@ -38,7 +38,7 @@ class TransactionAdapter(private var transactions:List<Transaction>) : RecyclerV
             holder.amount.setTextColor(ContextCompat.getColor(context,R.color.red))
         }
         holder.label.text=transcation.label
-        holder.image.setImageDrawable(context.getDrawable(transcation.image))
+
     }
 
     override fun getItemCount(): Int {

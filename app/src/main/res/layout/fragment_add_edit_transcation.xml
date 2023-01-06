@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddTranscactionActivity.AddEditTranscationActivity">
+    android:background="@drawable/backrepeat"
+    tools:context=".ui.AddEditTranscactionFragment.AddEditTranscationFragment">
 
 
     <ImageButton
@@ -19,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -28,19 +30,28 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Categori "
-            android:layout_marginStart="16dp"/>
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/customSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
+            android:background="@drawable/details_background"
+            android:paddingStart="10dp"
+            android:text="Transaction Details"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+
+        <Spinner
+            android:id="@+id/spinnerTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="15dp"/>
+            android:paddingStart="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/spinner"
+            android:entries="@array/categories"
+            android:popupBackground="#00BCD4"
+            android:textColorHint="@color/black" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/labelLayout"
@@ -48,12 +59,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Label"
+            android:textColorHint="@color/black"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            android:layout_marginEnd="16dp"
-            android:hint="Label"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -62,8 +74,8 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/label_selector"
                 android:drawablePadding="12dp"
-                android:maxLines="1"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,11 +86,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:hint="Amount"
+            android:textColorHint="@color/black"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            android:hint="Amount"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -99,11 +112,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:hint="Description"
+            android:textColorHint="@color/black"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            android:hint="Description"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -112,20 +126,35 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/description_selector"
                 android:drawablePadding="12dp"
-                android:maxLines="1"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonAddTransaction"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/transaction_background"
-            android:text="Add Transaction"
-            android:textColor="@color/white"/>
+            android:text="✔"
+            android:textColor="@color/white"
+            android:textSize="25dp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/createdTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="56dp"
+        android:text="Date Created: "
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

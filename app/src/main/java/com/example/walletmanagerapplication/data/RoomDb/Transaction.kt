@@ -10,15 +10,16 @@ import java.text.DateFormat
 @Entity(tableName = "transaction_table")
 @Parcelize
 data class Transaction(
-    @PrimaryKey(autoGenerate = true)
-    val id:Int,
-    val category:String,
-    val label:String,
-    val amount:Double,
-    val description:String,
-    val created:Long=System.currentTimeMillis(),
-    val image:Int
-    ):Parcelable{
+
+    val category: String,
+    val label: String,
+    val amount: Double,
+    val description: String,
+    val created: Long = System.currentTimeMillis(),
+    @PrimaryKey(autoGenerate = true) val id: Int=0
+
+
+):Parcelable{
         val createdDataFormatted:String
         get() =DateFormat.getDateInstance().format(created)
     }

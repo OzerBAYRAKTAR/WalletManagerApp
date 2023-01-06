@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HistoryFragment : Fragment(R.layout.fragment_history) {
+
     private lateinit var transactions: List<Transaction>
     private lateinit var transactionAdapter: TransactionAdapter
     private lateinit var linearlayoutManager:LinearLayoutManager

@@ -31,7 +31,7 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:backgroundTint="#2196F3"
             app:fabCradleMargin="6dp"
@@ -61,7 +61,7 @@
             android:id="@+id/fabAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#E91E63"
+            android:backgroundTint="#21D4F3"
             android:contentDescription="TODO"
             android:elevation="3dp"
             android:src="@drawable/ic_add"

@@ -10,6 +10,9 @@
         android:name="com.example.walletmanagerapplication.ui.History.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_addEditTranscationFragment"
+            app:destination="@id/addEditTranscationFragment" />
     </fragment>
     <fragment
         android:id="@+id/analyticsFragment"
@@ -26,4 +29,19 @@
         android:name="com.example.walletmanagerapplication.ui.Profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/addEditTranscationFragment"
+        android:name="com.example.walletmanagerapplication.ui.AddEditTranscactionFragment.AddEditTranscationFragment"
+        android:label="fragment_add_edit_transcation"
+        tools:layout="@layout/fragment_add_edit_transcation" >
+        <argument
+            android:name="transaction"
+            app:argType="com.example.walletmanagerapplication.data.RoomDb.Transaction"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+        <argument
+            android:name="title"
+            app:argType="string"/>
+
+    </fragment>
 </navigation>
