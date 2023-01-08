@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/addEditTranscationFragment"
         android:name="com.example.walletmanagerapplication.ui.AddEditTranscactionFragment.AddEditTranscationFragment"
-        android:label="fragment_add_edit_transcation"
+        android:label="{title}"
         tools:layout="@layout/fragment_add_edit_transcation" >
         <argument
             android:name="transaction"

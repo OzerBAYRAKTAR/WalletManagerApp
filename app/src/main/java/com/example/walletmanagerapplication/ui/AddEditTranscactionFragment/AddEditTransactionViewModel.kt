@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.walletmanagerapplication.data.RoomDb.Transaction
 import com.example.walletmanagerapplication.data.RoomDb.TransactionDao
-import com.example.walletmanagerapplication.ui.ADD_TASK_RESULT_OK
-import com.example.walletmanagerapplication.ui.EDIT_TASK_RESULT_OK
+import com.example.walletmanagerapplication.ui.ADD_TRANSACTION_RESULT_OK
+import com.example.walletmanagerapplication.ui.EDIT_TRANSACTION_RESULT_OK
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -36,6 +36,7 @@ class AddEditTransactionViewModel @Inject constructor(
             field=value
             state.set("transactionAmount",value)
         }
+
     var transactionDescription=state.get<String>("transactionDescription") ?: transaction?.description ?: ""
         set(value){
             field=value
@@ -46,16 +47,13 @@ class AddEditTransactionViewModel @Inject constructor(
     val addEditTransactionEvent=addEditTransactionChannel.receiveAsFlow()
 
     fun onSaveClick() {
-        if (transactionCategory.isBlank()) {
-            showInvalidInputMessage("Can not be Empty")
-            return
-        }
+
         if (transactionAmount.equals("0")) {
-            showInvalidInputMessage("Can not be Empty")
+            showInvalidInputMessage("Amount cant be empty")
             return
         }
         if (transactionLabel.isBlank()) {
-            showInvalidInputMessage("Can not be Empty")
+            showInvalidInputMessage("label cant be empty")
             return
         }
         if (transaction != null) {
@@ -77,11 +75,11 @@ class AddEditTransactionViewModel @Inject constructor(
 
     fun updateTransaction(transaction: Transaction)=viewModelScope.launch {
         transactionDao.update(transaction)
-        addEditTransactionChannel.send(AddEditTransactionEvent.NavigateBackWithResult(EDIT_TASK_RESULT_OK))
+        addEditTransactionChannel.send(AddEditTransactionEvent.NavigateBackWithResult(EDIT_TRANSACTION_RESULT_OK))
     }
     fun createTransaction(transaction: Transaction)=viewModelScope.launch {
         transactionDao.insert(transaction)
-        addEditTransactionChannel.send(AddEditTransactionEvent.NavigateBackWithResult(ADD_TASK_RESULT_OK))
+        addEditTransactionChannel.send(AddEditTransactionEvent.NavigateBackWithResult(ADD_TRANSACTION_RESULT_OK))
     }
     fun showInvalidInputMessage(text:String)=viewModelScope.launch {
         addEditTransactionChannel.send(AddEditTransactionEvent.ShowInvalidInputMessage(text))

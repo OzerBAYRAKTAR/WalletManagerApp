@@ -12,9 +12,6 @@
         android:icon="@drawable/ic_piechart"
         android:title="Analytics" />
     <item
-        android:id="@+id/placeHolder"
-        android:title="" />
-    <item
         android:id="@+id/recordFragment"
         android:icon="@drawable/ic_report"
         android:title="Report" />

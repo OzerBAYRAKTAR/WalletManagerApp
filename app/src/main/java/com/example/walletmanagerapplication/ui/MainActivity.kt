@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setBackgroundResource(androidx.appcompat.R.drawable.abc_item_background_holo_dark)
 
-        intentFab()
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
@@ -50,13 +49,6 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.nav_host_fragment,fragment)
         fragmentTransaction.commit()
     }
-    private fun intentFab() {
-        binding.fabAdd.setOnClickListener {
-            val intent=Intent(this, AddEditTranscationFragment::class.java)
-            startActivity(intent)
-        }
-    }
-
 }
-const val ADD_TASK_RESULT_OK= Activity.RESULT_FIRST_USER
-const val EDIT_TASK_RESULT_OK= Activity.RESULT_FIRST_USER + 1
+const val ADD_TRANSACTION_RESULT_OK= Activity.RESULT_FIRST_USER
+const val EDIT_TRANSACTION_RESULT_OK= Activity.RESULT_FIRST_USER + 1
