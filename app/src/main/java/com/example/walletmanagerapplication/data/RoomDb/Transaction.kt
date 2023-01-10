@@ -10,8 +10,7 @@ import java.text.DateFormat
 @Entity(tableName = "transaction_table")
 @Parcelize
 data class Transaction(
-
-    val category: String,
+    val category:String,
     val label: String,
     val amount: Double,
     val description: String,

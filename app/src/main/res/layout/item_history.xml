@@ -11,7 +11,7 @@
     app:cardCornerRadius="5dp"
     android:layout_margin="7dp"
     android:clickable="true"
-    android:backgroundTint="#CCC1C1"
+    android:backgroundTint="#A0C3DF"
     android:background="?selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,6 +61,7 @@
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:text="Category Name"
+            android:typeface="serif"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/material"

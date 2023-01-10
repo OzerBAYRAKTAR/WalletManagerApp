@@ -8,9 +8,12 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 
-@Database(entities = arrayOf(Transaction::class), version = 1)
+@Database(entities = [Transaction::class],
+    version = 3,
+    exportSchema = true)
 abstract class AppDataBase:RoomDatabase() {
     abstract fun transactionDao() : TransactionDao
+
 
 
     class Callback @Inject constructor(

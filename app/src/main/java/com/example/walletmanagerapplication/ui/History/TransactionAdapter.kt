@@ -57,6 +57,68 @@ class TransactionAdapter(private val listener:OnItemClickListener) : ListAdapter
         fun bind(transaction: Transaction) {
             binding.apply {
                 amountHistory.text=transaction.amount.toString()
+                categoryHistory.text=transaction.category.toString()
+
+                when(transaction.category){
+
+                    "Shopping"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.shopping)
+                    }
+                    "Car"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.car)
+                    }
+                    "Baby"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.baby)
+                    }
+                    "Beauty"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.beauty)
+                    }
+                    "Education"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.education)
+                    }
+                    "Electronic"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.electronic)
+                    }
+                    "FastFood"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.fastfood)
+                    }
+                    "PetShop"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.pet)
+                    }
+                    "Drink"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.drink)
+                    }
+                    "House"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.home)
+                    }
+                    "Furniture"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.furniture)
+                    }
+                    "Food"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.food)
+                    }
+                    "Clothes"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.clothes)
+                    }
+                    "Health"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.healthcare)
+                    }
+                    "Cigarette"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.smoking)
+                    }
+                    "Social"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.social)
+                    }
+                    "Travel"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.travel)
+                    }
+                    "Other"  -> {
+                        binding.imageHistory.setImageResource(R.drawable.other)
+                    }
+
+
+
+                }
 
             }
         }

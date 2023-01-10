@@ -16,16 +16,17 @@ import javax.inject.Inject
 @HiltViewModel
 class AddEditTransactionViewModel @Inject constructor(
     private val state: SavedStateHandle,
-    private val transactionDao: TransactionDao
+    private val transactionDao: TransactionDao,
 ): ViewModel(){
+
 
     val transaction=state.get<Transaction>("transaction")
 
     var transactionCategory=state.get<String>("transactionCategory") ?: transaction?.category ?: ""
-    set(value){
-        field=value
-        state.set("transactionCategory",value)
-    }
+        set(value){
+            field=value
+            state.set("transactionCategory",value)
+        }
     var transactionLabel=state.get<String>("transactionLabel") ?: transaction?.label ?: ""
         set(value){
             field=value
@@ -56,6 +57,12 @@ class AddEditTransactionViewModel @Inject constructor(
             showInvalidInputMessage("label cant be empty")
             return
         }
+       /* if (transactionCategory.isBlank()) {
+            showInvalidInputMessage("Please select category")
+            return
+        }
+
+        */
         if (transaction != null) {
             val updateTransaction=transaction.copy(
                 category = transactionCategory,
