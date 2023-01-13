@@ -30,6 +30,9 @@ object AppModule {
     @Provides
     fun providesTransactionDao(db:AppDataBase)=db.transactionDao()
 
+    @Provides
+    fun providesIncomeDao(db:AppDataBase)=db.incomeDao()
+
     @ApplicationScope
     @Provides
     @Singleton

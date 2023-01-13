@@ -1,35 +1,59 @@
 package com.example.walletmanagerapplication.ui.History
 
+import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.walletmanagerapplication.R
-import com.example.walletmanagerapplication.data.RoomDb.AppDataBase
 import com.example.walletmanagerapplication.data.RoomDb.Transaction
 import com.example.walletmanagerapplication.databinding.FragmentHistoryBinding
-import com.example.walletmanagerapplication.ui.AddEditTranscactionFragment.AddEditTransactionViewModel
 import com.example.walletmanagerapplication.util.exhaustive
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.time.ExperimentalTime
 
 @AndroidEntryPoint
 class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter.OnItemClickListener {
 
+
     private val viewModel: HistoryViewModel by viewModels()
 
+    private var totalExpense=0
 
+
+
+
+    @ExperimentalTime
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding=FragmentHistoryBinding.bind(view)
 
         val transactionAdapter=TransactionAdapter(this)
+
+        viewModel.getExpense().observe(viewLifecycleOwner, Observer {
+            it?.let {
+                totalExpense=it
+                binding.expenseTxt.text="$$totalExpense"
+            }
+        })
+
+
 
         binding.apply {
             historyRv.apply {
@@ -58,14 +82,21 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
                 viewModel.addNewTransaction()
             }
         }
+
+        viewModel.transaction.observe(viewLifecycleOwner){
+            transactionAdapter.submitList(it)
+        }
+
+
+
+
+
         setFragmentResultListener("add_edit_request"){_,bundle ->
             val result=bundle.getInt("add_edit_result")
             viewModel.onAddEditResult(result)
         }
 
-        viewModel.transaction.observe(viewLifecycleOwner){
-        transactionAdapter.submitList(it)
-        }
+
 
         //when fragment is on background we dont listen any event.
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
@@ -94,14 +125,41 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
                     is HistoryViewModel.TransactionEvent.ShowTaskSavedMessage ->{
                         Snackbar.make(requireView(), event.msg, Snackbar.LENGTH_LONG).show()
                     }
+                    else -> {}
                 }.exhaustive
             }
         }
 
 
+        binding.fabSalaryAdd.setOnClickListener {
+            val dialogg =Dialog(requireContext())
+            dialogg.setCancelable(false)
+            dialogg.setContentView(R.layout.add_income)
+            //val mDialogview=LayoutInflater.from(requireContext()).inflate(R.layout.add_income,null)
+
+            val amount=dialogg.findViewById(R.id.amountInput) as EditText
+            val cancelButotn=dialogg.findViewById(R.id.cancelIncome) as Button
+            val saveButton=dialogg.findViewById(R.id.saveIncome) as Button
+
+            dialogg.window!!.setGravity(Gravity.CENTER_VERTICAL)
+            
+
+            saveButton.setOnClickListener {
+                var amountEdt=amount.text.toString().trim()
+                viewModel.incomeOnSaveClick()
+
+
+            }
+            cancelButotn.setOnClickListener {
+                dialogg.dismiss()
+            }
+                dialogg.show()
+        }
 
 
     }
+
+
 
     override fun onItemclick(transaction: Transaction) {
         viewModel.onTransactionSelected(transaction)

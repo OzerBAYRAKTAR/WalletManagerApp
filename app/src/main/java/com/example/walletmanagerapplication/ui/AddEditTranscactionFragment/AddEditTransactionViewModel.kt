@@ -85,7 +85,7 @@ class AddEditTransactionViewModel @Inject constructor(
         addEditTransactionChannel.send(AddEditTransactionEvent.NavigateBackWithResult(EDIT_TRANSACTION_RESULT_OK))
     }
     fun createTransaction(transaction: Transaction)=viewModelScope.launch {
-        transactionDao.insert(transaction)
+        transactionDao.insertTransaction(transaction)
         addEditTransactionChannel.send(AddEditTransactionEvent.NavigateBackWithResult(ADD_TRANSACTION_RESULT_OK))
     }
     fun showInvalidInputMessage(text:String)=viewModelScope.launch {

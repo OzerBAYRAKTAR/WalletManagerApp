@@ -86,6 +86,7 @@ class AddEditTranscationFragment @Inject constructor(
 
             buttonAddTransaction.setOnClickListener {
                 viewModel.onSaveClick()
+
             }
         }
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {

@@ -8,11 +8,12 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 
-@Database(entities = [Transaction::class],
-    version = 3,
+@Database(entities = [Transaction::class,IncomeModel::class],
+    version = 4,
     exportSchema = true)
 abstract class AppDataBase:RoomDatabase() {
     abstract fun transactionDao() : TransactionDao
+    abstract fun incomeDao(): IncomeDao
 
 
 

@@ -14,7 +14,9 @@ import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.data.RoomDb.Transaction
 import com.example.walletmanagerapplication.databinding.ItemHistoryBinding
 
-class TransactionAdapter(private val listener:OnItemClickListener) : ListAdapter<Transaction, TransactionAdapter.TranscationHolder>(DifferentCallback()) {
+class TransactionAdapter(private val listener:OnItemClickListener,
+//private var transactions:List<Transaction>
+) : ListAdapter<Transaction, TransactionAdapter.TranscationHolder>(DifferentCallback()) {
 
 
 
@@ -57,7 +59,7 @@ class TransactionAdapter(private val listener:OnItemClickListener) : ListAdapter
         fun bind(transaction: Transaction) {
             binding.apply {
                 amountHistory.text=transaction.amount.toString()
-                categoryHistory.text=transaction.category.toString()
+                categoryHistory.text=transaction.category
 
                 when(transaction.category){
 
@@ -115,9 +117,6 @@ class TransactionAdapter(private val listener:OnItemClickListener) : ListAdapter
                     "Other"  -> {
                         binding.imageHistory.setImageResource(R.drawable.other)
                     }
-
-
-
                 }
 
             }
@@ -134,5 +133,11 @@ class TransactionAdapter(private val listener:OnItemClickListener) : ListAdapter
         override fun areContentsTheSame(oldItem: Transaction, newItem: Transaction)=
             oldItem==newItem
     }
+    /*fun setData(transaction:List<Transaction>) {
+        this.transactions = transaction
+        notifyDataSetChanged()
+    }
+
+     */
 
 }
