@@ -10,6 +10,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class IncomeModel(
     @PrimaryKey(autoGenerate = true) val id: Int=0,
-    val amount:Double
+    val amountIncome:Double
 ) : Parcelable {
 }

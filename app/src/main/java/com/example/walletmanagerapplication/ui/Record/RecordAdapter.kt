@@ -1,37 +1,34 @@
-package com.example.walletmanagerapplication.ui.History
+package com.example.walletmanagerapplication.ui.Record
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.data.RoomDb.Transaction
 import com.example.walletmanagerapplication.databinding.ItemHistoryBinding
-
-class TransactionAdapter(private val listener:OnItemClickListener,
-) : ListAdapter<Transaction, TransactionAdapter.TranscationHolder>(DifferentCallback()) {
+import com.example.walletmanagerapplication.databinding.ItemRecordBinding
 
 
+class RecordAdapter(private val listener:OnItemClickListener,
+) : ListAdapter<Transaction, RecordAdapter.TransRecordHolder>(DifferentCallback()) {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TranscationHolder {
-        val binding=ItemHistoryBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return TranscationHolder(binding)
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransRecordHolder {
+        val binding= ItemRecordBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return TransRecordHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: TranscationHolder, position: Int) {
+    override fun onBindViewHolder(holder: TransRecordHolder, position: Int) {
         val currentItem =getItem(position)
         holder.bind(currentItem)
 
 
     }
-    inner class TranscationHolder(private val binding:ItemHistoryBinding) :RecyclerView.ViewHolder(binding.root){
+    inner class TransRecordHolder(private val binding: ItemRecordBinding) : RecyclerView.ViewHolder(binding.root){
         init {
             binding.apply {
                 root.setOnClickListener{
@@ -46,64 +43,66 @@ class TransactionAdapter(private val listener:OnItemClickListener,
 
         fun bind(transaction: Transaction) {
             binding.apply {
-                amountHistory.text=transaction.amount.toString()
-                categoryHistory.text=transaction.category
+                recordAmount.text="$ ${transaction.amount.toString()}"
+                recordCategory.text=transaction.category
+                recordDescription.text=transaction.description
+                recordDate.text=transaction.createdDataFormatted
 
                 when(transaction.category){
 
                     "Shopping"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.shopping)
+                        binding.recordImage.setImageResource(R.drawable.shopping)
                     }
                     "Car"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.car)
+                        binding.recordImage.setImageResource(R.drawable.car)
                     }
                     "Baby"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.baby)
+                        binding.recordImage.setImageResource(R.drawable.baby)
                     }
                     "Beauty"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.beauty)
+                        binding.recordImage.setImageResource(R.drawable.beauty)
                     }
                     "Education"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.education)
+                        binding.recordImage.setImageResource(R.drawable.education)
                     }
                     "Electronic"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.electronic)
+                        binding.recordImage.setImageResource(R.drawable.electronic)
                     }
                     "FastFood"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.fastfood)
+                        binding.recordImage.setImageResource(R.drawable.fastfood)
                     }
                     "PetShop"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.pet)
+                        binding.recordImage.setImageResource(R.drawable.pet)
                     }
                     "Drink"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.drink)
+                        binding.recordImage.setImageResource(R.drawable.drink)
                     }
                     "House"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.home)
+                        binding.recordImage.setImageResource(R.drawable.home)
                     }
                     "Furniture"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.furniture)
+                        binding.recordImage.setImageResource(R.drawable.furniture)
                     }
                     "Food"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.food)
+                        binding.recordImage.setImageResource(R.drawable.food)
                     }
                     "Clothes"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.clothes)
+                        binding.recordImage.setImageResource(R.drawable.clothes)
                     }
                     "Health"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.healthcare)
+                        binding.recordImage.setImageResource(R.drawable.healthcare)
                     }
                     "Cigarette"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.smoking)
+                        binding.recordImage.setImageResource(R.drawable.smoking)
                     }
                     "Social"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.social)
+                        binding.recordImage.setImageResource(R.drawable.social)
                     }
                     "Travel"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.travel)
+                        binding.recordImage.setImageResource(R.drawable.travel)
                     }
                     "Other"  -> {
-                        binding.imageHistory.setImageResource(R.drawable.other)
+                        binding.recordImage.setImageResource(R.drawable.other)
                     }
                 }
 
@@ -121,6 +120,7 @@ class TransactionAdapter(private val listener:OnItemClickListener,
         override fun areContentsTheSame(oldItem: Transaction, newItem: Transaction)=
             oldItem==newItem
     }
+
 
 
 }

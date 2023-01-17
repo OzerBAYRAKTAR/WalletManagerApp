@@ -15,4 +15,7 @@ class ExpenseRepo @Inject constructor (
     fun getTotalIncome(): LiveData<Int> {
         return transactionDao.getTotalIncome()
     }
+    fun getTotalBalance(): LiveData<Int> {
+        return transactionDao.getTotalBalance()
+    }
 }

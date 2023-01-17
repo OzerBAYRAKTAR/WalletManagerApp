@@ -1,22 +1,18 @@
 package com.example.walletmanagerapplication.ui.AddEditTranscactionFragment
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.os.bundleOf
-import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.walletmanagerapplication.R
-import com.example.walletmanagerapplication.data.RoomDb.AppDataBase
 import com.example.walletmanagerapplication.databinding.FragmentAddEditTranscationBinding
 import com.example.walletmanagerapplication.util.exhaustive
 import com.google.android.material.snackbar.Snackbar
@@ -48,14 +44,8 @@ class AddEditTranscationFragment @Inject constructor(
         binding.spinnerTransaction.onItemSelectedListener= object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
 
-
                 binding.categoryText.setText(p0?.getItemAtPosition(p2).toString())
-                //binding.categoryText.setText(viewModel.transactionCategory)
-
-                }
-
-
-
+            }
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
@@ -86,6 +76,7 @@ class AddEditTranscationFragment @Inject constructor(
 
             buttonAddTransaction.setOnClickListener {
                 viewModel.onSaveClick()
+                findNavController().popBackStack()
 
             }
         }

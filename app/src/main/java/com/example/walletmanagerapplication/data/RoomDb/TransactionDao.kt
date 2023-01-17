@@ -18,9 +18,11 @@ interface TransactionDao {
     @Query("SELECT SUM(amount) from transaction_table")
     fun getTotalSpent():LiveData<Int>
 
-    @Query("SELECT SUM(amount) from ıncome_table")
-    fun getTotalIncome(): LiveData<Int>
+    @Query("SELECT (SELECT SUM(amountIncome) from ıncome_table)- (SELECT SUM(amount) from transaction_table)")
+    fun getTotalBalance():LiveData<Int>
 
+    @Query("SELECT SUM(amountIncome) from ıncome_table")
+    fun getTotalIncome(): LiveData<Int>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTransaction(transaction: Transaction)
@@ -28,19 +30,27 @@ interface TransactionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertIncome(income: IncomeModel)
 
-    @Query("DELETE FROM transaction_table")
-    suspend fun deleteTransaction(transaction: Transaction)
+    @Delete
+    suspend fun delete(transaction:Transaction)
 
     @Query("DELETE FROM ıncome_table")
-    suspend fun deleteIncome(income: IncomeModel)
+    fun deleteIncome()
 
     @Update
     suspend fun update( transaction: Transaction)
 
 
-
-
-
-
-
 }
+/*
+ @Query("SELECT * from ıncome_table")
+    fun getIncomes(): Flow<List<IncomeModel>>
+
+    @Query("SELECT SUM(amount) from ıncome_table")
+    fun getTotalIncome(): LiveData<Int>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertIncome(income: IncomeModel)
+
+    @Query("DELETE FROM ıncome_table")
+    suspend fun deleteIncome(income: IncomeModel)
+ */

@@ -1,26 +1,20 @@
 package com.example.walletmanagerapplication.ui.History
 
-import android.app.Dialog
-import android.content.Context
+
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.example.walletmanagerapplication.R
+import com.example.walletmanagerapplication.data.RoomDb.AppDataBase
 import com.example.walletmanagerapplication.data.RoomDb.Transaction
 import com.example.walletmanagerapplication.databinding.FragmentHistoryBinding
 import com.example.walletmanagerapplication.util.exhaustive
@@ -35,8 +29,9 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
     private val viewModel: HistoryViewModel by viewModels()
 
     private var totalExpense=0
-
-
+    private var totalIncome=0
+    private var totalBalance=0
+    private lateinit var db:AppDataBase
 
 
     @ExperimentalTime
@@ -44,14 +39,30 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
         super.onViewCreated(view, savedInstanceState)
         val binding=FragmentHistoryBinding.bind(view)
 
+
         val transactionAdapter=TransactionAdapter(this)
 
         viewModel.getExpense().observe(viewLifecycleOwner, Observer {
             it?.let {
                 totalExpense=it
-                binding.expenseTxt.text="$$totalExpense"
+                binding.expenseTxt.text="$totalExpense"
             }
         })
+        viewModel.getIncome().observe(viewLifecycleOwner, Observer {
+            it?.let{
+                totalIncome=it
+                binding.incomeTxt.text="$totalIncome"
+            }
+        })
+        viewModel.getTotalBalance().observe(viewLifecycleOwner, Observer {
+            it?.let{
+                totalBalance=it
+                binding.totalBalance.text="$$totalBalance"
+            }
+        })
+        //binding.totalBalance.text= (totalIncome-totalExpense).toString()
+
+
 
 
 
@@ -61,6 +72,7 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
                 layoutManager = LinearLayoutManager(requireContext())
                 setHasFixedSize(true)
             }
+
             ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
                 override fun onMove(
@@ -81,13 +93,16 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
             fabAddHistory.setOnClickListener {
                 viewModel.addNewTransaction()
             }
+            fabSalaryAdd.setOnClickListener {
+                viewModel.addNewIncome()
+            }
         }
 
         viewModel.transaction.observe(viewLifecycleOwner){
             transactionAdapter.submitList(it)
         }
-
-
+        db= Room.databaseBuilder(requireContext(),
+        AppDataBase::class.java,"ıncome_table").build()
 
 
 
@@ -96,6 +111,16 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
             viewModel.onAddEditResult(result)
         }
 
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.incomeEvent.collect{ incomeEvent ->
+                when(incomeEvent) {
+                is HistoryViewModel.IncomeEvent.NavigateToIncomeScreen ->{
+                    val action=HistoryFragmentDirections.actionHistoryFragmentToIncomeFragment()
+                    findNavController().navigate(action)
+                     }
+                }.exhaustive
+            }
+        }
 
 
         //when fragment is on background we dont listen any event.
@@ -130,37 +155,38 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
             }
         }
 
+        /*
+         binding.apply {
+     fabSalaryAdd.setOnClickListener {
+         val dialogg =Dialog(requireContext())
+         dialogg.setCancelable(false)
+         dialogg.setContentView(R.layout.add_income)
+         //val mDialogview=LayoutInflater.from(requireContext()).inflate(R.layout.add_income,null)
 
-        binding.fabSalaryAdd.setOnClickListener {
-            val dialogg =Dialog(requireContext())
-            dialogg.setCancelable(false)
-            dialogg.setContentView(R.layout.add_income)
-            //val mDialogview=LayoutInflater.from(requireContext()).inflate(R.layout.add_income,null)
+         var amountDialog=dialogg.findViewById<EditText>(R.id.amountIncomeInput)
+         val cancelButotn=dialogg.findViewById<Button>(R.id.cancelIncome)
+         val saveButton=dialogg.findViewById<Button>(R.id.saveIncome)
 
-            val amount=dialogg.findViewById(R.id.amountInput) as EditText
-            val cancelButotn=dialogg.findViewById(R.id.cancelIncome) as Button
-            val saveButton=dialogg.findViewById(R.id.saveIncome) as Button
+         val amount=amountDialog.text
 
-            dialogg.window!!.setGravity(Gravity.CENTER_VERTICAL)
-            
-
-            saveButton.setOnClickListener {
-                var amountEdt=amount.text.toString().trim()
-                viewModel.incomeOnSaveClick()
+         dialogg.window!!.setGravity(Gravity.CENTER_VERTICAL)
 
 
-            }
-            cancelButotn.setOnClickListener {
-                dialogg.dismiss()
-            }
-                dialogg.show()
-        }
+         saveButton.setOnClickListener {
+             //viewModel.incomeOnSaveClick()
+             incomeTxt.setText("$"+amountDialog.text.toString())
+             dialogg.dismiss()
 
+         }
 
+         cancelButotn.setOnClickListener {
+             dialogg.dismiss()
+         }
+             dialogg.show()
+     }
+ }
+*/
     }
-
-
-
     override fun onItemclick(transaction: Transaction) {
         viewModel.onTransactionSelected(transaction)
     }

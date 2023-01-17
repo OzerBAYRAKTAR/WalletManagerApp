@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:elevation="15dp"
+    app:cardElevation="15dp"
+    app:cardCornerRadius="13dp"
+    android:layout_margin="7dp"
+    android:clickable="true"
+    android:backgroundTint="#A0C3DF"
+    android:background="?selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_margin="6dp">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/material"
+            android:layout_width="55dp"
+            android:layout_height="61dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/recordImage"
+                    android:layout_width="49dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="1dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <View
+            android:id="@+id/aaa"
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:layout_marginEnd="100dp"
+            android:background="@color/black"
+            android:rotation="-90"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.536" />
+
+        <TextView
+            android:id="@+id/recordAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif"
+            android:padding="3dp"
+            android:text="$16"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/recordCategory"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/recordCategory"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/recordCategory"
+            app:layout_constraintStart_toStartOf="@+id/recordAmount" />
+
+        <TextView
+            android:id="@+id/recordCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:paddingStart="3dp"
+            android:text="Travel"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recordAmount" />
+
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/recordCategory"
+            app:layout_constraintTop_toBottomOf="@+id/recordCategory" />
+
+        <TextView
+            android:id="@+id/recordDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:padding="3dp"
+            android:paddingStart="3dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/recordCategory"
+            app:layout_constraintTop_toBottomOf="@+id/recordCategory" />
+        <View
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/recordDescription"
+            app:layout_constraintTop_toBottomOf="@+id/recordDescription" />
+
+        <TextView
+            android:id="@+id/recordDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:paddingStart="3dp"
+            android:fontFamily="sans-serif"
+            android:padding="3dp"
+            android:text="Created Date: "
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/recordDescription"
+            app:layout_constraintTop_toBottomOf="@+id/recordDescription" />
+
+        <View
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/recordDate" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -24,14 +24,13 @@ object AppModule {
         callback: AppDataBase.Callback
     ) = Room.databaseBuilder(application, AppDataBase::class.java, "transaction_database")
         .fallbackToDestructiveMigration()
+        .allowMainThreadQueries()
         .addCallback(callback)
         .build()
 
     @Provides
     fun providesTransactionDao(db:AppDataBase)=db.transactionDao()
 
-    @Provides
-    fun providesIncomeDao(db:AppDataBase)=db.incomeDao()
 
     @ApplicationScope
     @Provides

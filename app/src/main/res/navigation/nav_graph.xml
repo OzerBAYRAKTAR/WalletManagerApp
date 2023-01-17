@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_historyFragment_to_addEditTranscationFragment"
             app:destination="@id/addEditTranscationFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_incomeFragment"
+            app:destination="@id/incomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/analyticsFragment"
@@ -44,4 +47,17 @@
             app:argType="string"/>
 
     </fragment>
+    <fragment
+        android:id="@+id/incomeFragment"
+        android:name="com.example.walletmanagerapplication.ui.Income.IncomeFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_add_income"/>
+        <argument
+        android:name="income"
+        app:argType="com.example.walletmanagerapplication.data.RoomDb.IncomeModel"
+        app:nullable="true"
+        android:defaultValue="@null"/>
+        <argument
+        android:name="title"
+        app:argType="string"/>
 </navigation>

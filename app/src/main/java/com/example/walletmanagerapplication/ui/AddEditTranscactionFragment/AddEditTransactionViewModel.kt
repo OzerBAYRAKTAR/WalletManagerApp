@@ -61,7 +61,6 @@ class AddEditTransactionViewModel @Inject constructor(
             showInvalidInputMessage("Please select category")
             return
         }
-
         */
         if (transaction != null) {
             val updateTransaction=transaction.copy(
