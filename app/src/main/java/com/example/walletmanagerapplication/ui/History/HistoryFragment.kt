@@ -53,7 +53,6 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
         super.onViewCreated(view, savedInstanceState)
         val binding=FragmentHistoryBinding.bind(view)
 
-        println("-----------------")
         val transactionAdapter=TransactionAdapter(this)
 
 

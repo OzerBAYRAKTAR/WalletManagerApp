@@ -5,16 +5,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/splash_background"
+    android:background="@drawable/backrepeat"
     tools:context=".ui.Analytics.AnalyticsFragment">
     
-    
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/analyticsTodayCard"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_rowWeight="1"
+        android:backgroundTint="#03A9F4"
         android:layout_marginTop="60dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="15dp">
@@ -47,6 +49,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
+        android:backgroundTint="#03A9F4"
         android:layout_rowWeight="1"
         android:layout_marginTop="60dp"
         app:cardCornerRadius="20dp"
@@ -82,6 +85,7 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_rowWeight="1"
+        android:backgroundTint="#03A9F4"
         android:layout_marginTop="60dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="15dp">

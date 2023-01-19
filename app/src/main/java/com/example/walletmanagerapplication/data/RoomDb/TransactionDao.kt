@@ -18,7 +18,7 @@ interface TransactionDao {
     @Query("SELECT SUM(amount) from transaction_table")
     fun getTotalSpent():LiveData<Int>
 
-    @Query("SELECT (SELECT SUM(amountIncome) from ıncome_table) - (SELECT SUM(amount) from transaction_table)")
+    @Query("SELECT (SELECT TOTAL(amountIncome) from ıncome_table) - (SELECT TOTAL(amount) from transaction_table)")
     fun getTotalBalance():LiveData<Int>
 
     @Query("SELECT SUM(amountIncome) from ıncome_table")
