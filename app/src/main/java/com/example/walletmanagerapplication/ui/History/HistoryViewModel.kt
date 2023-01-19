@@ -12,6 +12,7 @@ import com.example.walletmanagerapplication.repository.ExpenseRepo
 import com.example.walletmanagerapplication.ui.ADD_TRANSACTION_RESULT_OK
 import com.example.walletmanagerapplication.ui.EDIT_TRANSACTION_RESULT_OK
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -38,9 +39,12 @@ class HistoryViewModel @Inject constructor(
 
 
 
+
+
     fun onTransactionSelected(transaction: Transaction)=viewModelScope.launch {
         transactionEventChannel.send(TransactionEvent.NavigateToEditScreen(transaction))
     }
+
     fun onTransactionSwipted(transaction: Transaction)=viewModelScope.launch {
         transactionDao.delete(transaction)
         transactionEventChannel.send(TransactionEvent.ShowUndoDeleteTaskMessage(transaction))
@@ -65,13 +69,20 @@ class HistoryViewModel @Inject constructor(
     fun getExpense(): LiveData<Int> {
         return expenseRepo.getTotalExpense()
     }
-
     fun getIncome(): LiveData<Int> {
         return expenseRepo.getTotalIncome()
     }
     fun getTotalBalance(): LiveData<Int> {
         return expenseRepo.getTotalBalance()
     }
+     fun deleteIncome() {
+         viewModelScope.launch(Dispatchers.IO) {
+             transactionDao.deleteIncome()
+         }
+     }
+
+
+
 
     private fun showTransactionSavedMessage(text:String)=viewModelScope.launch {
         transactionEventChannel.send(TransactionEvent.ShowTaskSavedMessage(text))

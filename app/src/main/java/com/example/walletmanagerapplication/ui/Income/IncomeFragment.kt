@@ -30,6 +30,9 @@ class IncomeFragment @Inject constructor(): Fragment(R.layout.fragment_add_incom
                 viewModel.saveClick()
                 findNavController().popBackStack()
             }
+            cancelIncome.setOnClickListener {
+                activity?.onBackPressed()
+            }
         }
     }
 }

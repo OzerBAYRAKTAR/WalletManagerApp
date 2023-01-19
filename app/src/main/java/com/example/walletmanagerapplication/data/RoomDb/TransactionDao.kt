@@ -18,7 +18,7 @@ interface TransactionDao {
     @Query("SELECT SUM(amount) from transaction_table")
     fun getTotalSpent():LiveData<Int>
 
-    @Query("SELECT (SELECT SUM(amountIncome) from ıncome_table)- (SELECT SUM(amount) from transaction_table)")
+    @Query("SELECT (SELECT SUM(amountIncome) from ıncome_table) - (SELECT SUM(amount) from transaction_table)")
     fun getTotalBalance():LiveData<Int>
 
     @Query("SELECT SUM(amountIncome) from ıncome_table")
@@ -34,7 +34,7 @@ interface TransactionDao {
     suspend fun delete(transaction:Transaction)
 
     @Query("DELETE FROM ıncome_table")
-    fun deleteIncome()
+    suspend fun deleteIncome()
 
     @Update
     suspend fun update( transaction: Transaction)

@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlin.time.ExperimentalTime
 
 @AndroidEntryPoint
-class RecordFragment : Fragment(R.layout.fragment_record) ,RecordAdapter.OnItemClickListener {
+class RecordFragment : Fragment(R.layout.fragment_record){
 
     private val viewModel: RecordViewModel by viewModels()
     private var totalExpense=0
@@ -25,7 +25,7 @@ class RecordFragment : Fragment(R.layout.fragment_record) ,RecordAdapter.OnItemC
         super.onViewCreated(view, savedInstanceState)
         val binding=FragmentRecordBinding.bind(view)
 
-        val transactionAdapter=RecordAdapter(this)
+        val transactionAdapter=RecordAdapter()
 
         viewModel.getExpense().observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -44,13 +44,5 @@ class RecordFragment : Fragment(R.layout.fragment_record) ,RecordAdapter.OnItemC
         viewModel.transaction.observe(viewLifecycleOwner){
             transactionAdapter.submitList(it)
         }
-
-
-
     }
-
-    override fun onItemclick(transaction: Transaction) {
-        TODO("Not yet implemented")
-    }
-
 }

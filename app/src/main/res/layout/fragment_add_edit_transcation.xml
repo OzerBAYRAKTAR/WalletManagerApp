@@ -9,14 +9,19 @@
     tools:context=".ui.AddEditTranscactionFragment.AddEditTranscationFragment">
 
 
-    <ImageButton
-        android:id="@+id/closeBtn"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/close_bg"
+        android:background="@drawable/details_background"
+        android:paddingStart="10dp"
+        android:text="Add Expense"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -29,14 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:background="@drawable/details_background"
-            android:paddingStart="10dp"
-            android:text="Add Expense"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -153,17 +151,45 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonAddTransaction"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="end"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/transaction_background"
-            android:text="✔"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonCancelTransaction"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="start"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/transaction_background"
+                android:text="X"
+                android:layout_marginStart="25dp"
+                android:textColor="@color/white"
+                android:textSize="25dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAddTransaction"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/transaction_background"
+                android:text="✔"
+                android:layout_marginEnd="25dp"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                tools:ignore="RtlHardcoded" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 

@@ -14,7 +14,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.databinding.FragmentAddEditTranscationBinding
-import com.example.walletmanagerapplication.util.exhaustive
+import com.example.walletmanagerapplication.util.WalletUtils
+import com.example.walletmanagerapplication.util.WalletUtils.exhaustive
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -23,6 +24,7 @@ import javax.inject.Inject
 class AddEditTranscationFragment @Inject constructor(
 
 ) : Fragment(R.layout.fragment_add_edit_transcation){
+    private var utils=WalletUtils
 
     private val viewModel: AddEditTransactionViewModel by viewModels()
 
@@ -78,6 +80,9 @@ class AddEditTranscationFragment @Inject constructor(
                 viewModel.onSaveClick()
                 findNavController().popBackStack()
 
+            }
+            buttonCancelTransaction.setOnClickListener {
+                activity?.onBackPressed()
             }
         }
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {

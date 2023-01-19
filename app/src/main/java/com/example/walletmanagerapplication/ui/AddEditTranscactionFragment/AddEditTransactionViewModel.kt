@@ -49,7 +49,7 @@ class AddEditTransactionViewModel @Inject constructor(
 
     fun onSaveClick() {
 
-        if (transactionAmount.equals("0")) {
+        if (transactionAmount.equals("")) {
             showInvalidInputMessage("Amount cant be empty")
             return
         }

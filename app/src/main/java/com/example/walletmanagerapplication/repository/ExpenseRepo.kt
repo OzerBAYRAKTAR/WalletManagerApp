@@ -1,7 +1,9 @@
 package com.example.walletmanagerapplication.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.example.walletmanagerapplication.data.RoomDb.TransactionDao
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -18,4 +20,5 @@ class ExpenseRepo @Inject constructor (
     fun getTotalBalance(): LiveData<Int> {
         return transactionDao.getTotalBalance()
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.walletmanagerapplication.ui.Income
 
+import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,19 +28,21 @@ class IncomeViewModel @Inject constructor(
         }
 
     fun saveClick() {
-        if (incomeAmount.equals("0")) {
+        if (incomeAmount.equals("")) {
             showInvalidInputMessage("Amount cant be empty")
             return
+        } else{
+            val newIncome=IncomeModel(
+                amountIncome = incomeAmount.toString().toDouble())
+            createIncome(newIncome)
+            showInvalidInputMessage("Amount added succesfully")
         }
-        val newIncome=IncomeModel(
-            amountIncome = incomeAmount.toString().toDouble())
-        createIncome(newIncome)
     }
 
     fun createIncome(incomeModel: IncomeModel)=viewModelScope.launch {
         transactionDao.insertIncome(incomeModel)
-
     }
+
     fun showInvalidInputMessage(text:String)=viewModelScope.launch {
         incomeTransactionChannel.send(IncomeViewModel.IncomeTransactionEvent.ShowInvalidInputMessage(text))
     }

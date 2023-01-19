@@ -11,8 +11,7 @@ import com.example.walletmanagerapplication.databinding.ItemHistoryBinding
 import com.example.walletmanagerapplication.databinding.ItemRecordBinding
 
 
-class RecordAdapter(private val listener:OnItemClickListener,
-) : ListAdapter<Transaction, RecordAdapter.TransRecordHolder>(DifferentCallback()) {
+class RecordAdapter() : ListAdapter<Transaction, RecordAdapter.TransRecordHolder>(DifferentCallback()) {
 
 
 
@@ -35,7 +34,6 @@ class RecordAdapter(private val listener:OnItemClickListener,
                     val position=adapterPosition
                     if (position != RecyclerView.NO_POSITION) {
                         val trans = getItem(position)
-                        listener.onItemclick(trans)
                     }
                 }
             }
@@ -109,9 +107,7 @@ class RecordAdapter(private val listener:OnItemClickListener,
             }
         }
     }
-    interface OnItemClickListener{
-        fun onItemclick(transaction: Transaction)
-    }
+
     class DifferentCallback: DiffUtil.ItemCallback<Transaction>(){
         override fun areItemsTheSame(oldItem: Transaction, newItem: Transaction):Boolean{
             return oldItem.id==newItem.id

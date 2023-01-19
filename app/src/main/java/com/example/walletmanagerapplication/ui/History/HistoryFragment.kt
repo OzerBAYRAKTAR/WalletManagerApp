@@ -1,25 +1,38 @@
 package com.example.walletmanagerapplication.ui.History
 
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Button
+import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Database
 import androidx.room.Room
 import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.data.RoomDb.AppDataBase
 import com.example.walletmanagerapplication.data.RoomDb.Transaction
 import com.example.walletmanagerapplication.databinding.FragmentHistoryBinding
-import com.example.walletmanagerapplication.util.exhaustive
+import com.example.walletmanagerapplication.util.WalletUtils
+import com.example.walletmanagerapplication.util.WalletUtils.exhaustive
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlin.time.ExperimentalTime
 
 @AndroidEntryPoint
@@ -28,10 +41,11 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
 
     private val viewModel: HistoryViewModel by viewModels()
 
-    private var totalExpense=0
-    private var totalIncome=0
-    private var totalBalance=0
+    private var totalExpense:Int=0
+    private var totalIncome:Int=0
+    private var totalBalance:Int=0
     private lateinit var db:AppDataBase
+
 
 
     @ExperimentalTime
@@ -39,30 +53,31 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
         super.onViewCreated(view, savedInstanceState)
         val binding=FragmentHistoryBinding.bind(view)
 
-
+        println("-----------------")
         val transactionAdapter=TransactionAdapter(this)
 
+
+        viewModel.getTotalBalance().observe(viewLifecycleOwner, Observer {
+            it?.let{
+                totalBalance=it
+                binding.totalBalance.text="$$totalBalance"
+
+            }
+        })
         viewModel.getExpense().observe(viewLifecycleOwner, Observer {
             it?.let {
                 totalExpense=it
                 binding.expenseTxt.text="$totalExpense"
+
             }
         })
         viewModel.getIncome().observe(viewLifecycleOwner, Observer {
             it?.let{
                 totalIncome=it
                 binding.incomeTxt.text="$totalIncome"
+
             }
         })
-        viewModel.getTotalBalance().observe(viewLifecycleOwner, Observer {
-            it?.let{
-                totalBalance=it
-                binding.totalBalance.text="$$totalBalance"
-            }
-        })
-        //binding.totalBalance.text= (totalIncome-totalExpense).toString()
-
-
 
 
 
@@ -92,10 +107,40 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
 
             fabAddHistory.setOnClickListener {
                 viewModel.addNewTransaction()
+                println("$totalExpense")
+
             }
             fabSalaryAdd.setOnClickListener {
                 viewModel.addNewIncome()
             }
+
+            incomeDelete.setOnClickListener {
+
+                val dialogg = Dialog(requireContext())
+                dialogg.setCancelable(false)
+                dialogg.setContentView(R.layout.delete_dialog)
+
+                val cancelButotn=dialogg.findViewById<Button>(R.id.noDelete)
+                val saveButton=dialogg.findViewById<Button>(R.id.yesDelete)
+
+                dialogg.window!!.setGravity(Gravity.CENTER_VERTICAL)
+
+                saveButton.setOnClickListener {
+                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                        withContext(Dispatchers.IO){
+                            viewModel.deleteIncome()
+                        }
+                    }
+                    dialogg.dismiss()
+                    WalletUtils
+                }
+                cancelButotn.setOnClickListener {
+                    dialogg.dismiss()
+                }
+                dialogg.show()
+            }
+
+
         }
 
         viewModel.transaction.observe(viewLifecycleOwner){
@@ -155,38 +200,23 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
             }
         }
 
-        /*
-         binding.apply {
-     fabSalaryAdd.setOnClickListener {
-         val dialogg =Dialog(requireContext())
-         dialogg.setCancelable(false)
-         dialogg.setContentView(R.layout.add_income)
-         //val mDialogview=LayoutInflater.from(requireContext()).inflate(R.layout.add_income,null)
-
-         var amountDialog=dialogg.findViewById<EditText>(R.id.amountIncomeInput)
-         val cancelButotn=dialogg.findViewById<Button>(R.id.cancelIncome)
-         val saveButton=dialogg.findViewById<Button>(R.id.saveIncome)
-
-         val amount=amountDialog.text
-
-         dialogg.window!!.setGravity(Gravity.CENTER_VERTICAL)
-
-
-         saveButton.setOnClickListener {
-             //viewModel.incomeOnSaveClick()
-             incomeTxt.setText("$"+amountDialog.text.toString())
-             dialogg.dismiss()
-
-         }
-
-         cancelButotn.setOnClickListener {
-             dialogg.dismiss()
-         }
-             dialogg.show()
-     }
- }
-*/
     }
+    private fun deleteAllIncome() {
+        val builder=AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes"){_,_ ->
+            viewModel.deleteIncome()
+            Toast.makeText(
+                requireContext(),
+                "Successfully removed income",
+                Toast.LENGTH_LONG).show()
+        }
+        builder.setNegativeButton("No"){_,_ ->}
+        builder.setTitle("Delete everything")
+        builder.setMessage("Do you want to reset your income ?")
+        builder.create().show()
+    }
+
+
     override fun onItemclick(transaction: Transaction) {
         viewModel.onTransactionSelected(transaction)
     }
