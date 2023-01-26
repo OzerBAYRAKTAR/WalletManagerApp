@@ -47,7 +47,6 @@ class HistoryFragment : Fragment(R.layout.fragment_history) , TransactionAdapter
     private lateinit var db:AppDataBase
 
 
-
     @ExperimentalTime
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

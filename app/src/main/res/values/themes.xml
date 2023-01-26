@@ -16,4 +16,9 @@
         <item name="colorControlActivated">@color/green</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="roundedTextView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+
+    </style>
 </resources>

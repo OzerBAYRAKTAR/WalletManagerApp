@@ -1,11 +1,8 @@
 package com.example.walletmanagerapplication.ui.History
 
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -13,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.walletmanagerapplication.R
 import com.example.walletmanagerapplication.data.RoomDb.Transaction
 import com.example.walletmanagerapplication.databinding.ItemHistoryBinding
+
 
 class TransactionAdapter(private val listener:OnItemClickListener,
 ) : ListAdapter<Transaction, TransactionAdapter.TranscationHolder>(DifferentCallback()) {
@@ -45,23 +43,35 @@ class TransactionAdapter(private val listener:OnItemClickListener,
         }
 
         fun bind(transaction: Transaction) {
+            val context=binding.categoryHistory.context
             binding.apply {
                 amountHistory.text=transaction.amount.toString()
-                categoryHistory.text=transaction.category
+                categoryHistory.setText(transaction.category)
+                val shape=GradientDrawable()
 
                 when(transaction.category){
 
                     "Shopping"  -> {
                         binding.imageHistory.setImageResource(R.drawable.shopping)
+                        binding.categoryHistory.setBackgroundColor(ContextCompat.getColor(context,R.color.red))
+                        //binding.categoryHistory.resources.getDimension.div(10)
+                        //shape.shape=(GradientDrawable.RECTANGLE)
+                        //categoryHistory.setBackgroundDrawable(shape)
                     }
                     "Car"  -> {
                         binding.imageHistory.setImageResource(R.drawable.car)
+                        binding.categoryHistory.setBackgroundColor(ContextCompat.getColor(context,R.color.green))
                     }
                     "Baby"  -> {
                         binding.imageHistory.setImageResource(R.drawable.baby)
+                        binding.categoryHistory.setBackgroundColor(ContextCompat.getColor(context,
+                            R.color.purple_500
+                        ))
                     }
                     "Beauty"  -> {
                         binding.imageHistory.setImageResource(R.drawable.beauty)
+                        binding.categoryHistory.setBackgroundColor(ContextCompat.getColor(context,
+                            androidx.appcompat.R.color.material_blue_grey_800))
                     }
                     "Education"  -> {
                         binding.imageHistory.setImageResource(R.drawable.education)
@@ -124,3 +134,4 @@ class TransactionAdapter(private val listener:OnItemClickListener,
 
 
 }
+

@@ -12,6 +12,9 @@ interface TransactionDao {
     @Query("SELECT * from transaction_table")
     fun getTransactions(): Flow<List<Transaction>>
 
+    @Query("SELECT * from transaction_table")
+    fun getTrans(): List<Transaction>
+
     @Query("SELECT * from ıncome_table")
     fun getIncomes(): Flow<List<IncomeModel>>
 
