@@ -41,10 +41,10 @@ class RecordAdapter() : ListAdapter<Transaction, RecordAdapter.TransRecordHolder
 
         fun bind(transaction: Transaction) {
             binding.apply {
-                recordAmount.text="$ ${transaction.amount.toString()}"
-                recordCategory.text=transaction.category
-                recordDescription.text=transaction.description
-                recordDate.text=transaction.createdDataFormatted
+                recordAmount.text="Amount: $${transaction.amount.toString()}"
+                recordCategory.text="Category: ${transaction.category}"
+                recordDescription.text="Description: ${transaction.description}"
+                recordDate.text="Date: ${transaction.createdDataFormatted}"
 
                 when(transaction.category){
 

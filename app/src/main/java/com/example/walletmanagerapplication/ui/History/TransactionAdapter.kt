@@ -53,10 +53,7 @@ class TransactionAdapter(private val listener:OnItemClickListener,
 
                     "Shopping"  -> {
                         binding.imageHistory.setImageResource(R.drawable.shopping)
-                        binding.categoryHistory.setBackgroundColor(ContextCompat.getColor(context,R.color.red))
-                        //binding.categoryHistory.resources.getDimension.div(10)
-                        //shape.shape=(GradientDrawable.RECTANGLE)
-                        //categoryHistory.setBackgroundDrawable(shape)
+
                     }
                     "Car"  -> {
                         binding.imageHistory.setImageResource(R.drawable.car)
@@ -64,14 +61,11 @@ class TransactionAdapter(private val listener:OnItemClickListener,
                     }
                     "Baby"  -> {
                         binding.imageHistory.setImageResource(R.drawable.baby)
-                        binding.categoryHistory.setBackgroundColor(ContextCompat.getColor(context,
-                            R.color.purple_500
-                        ))
+
                     }
                     "Beauty"  -> {
                         binding.imageHistory.setImageResource(R.drawable.beauty)
-                        binding.categoryHistory.setBackgroundColor(ContextCompat.getColor(context,
-                            androidx.appcompat.R.color.material_blue_grey_800))
+
                     }
                     "Education"  -> {
                         binding.imageHistory.setImageResource(R.drawable.education)

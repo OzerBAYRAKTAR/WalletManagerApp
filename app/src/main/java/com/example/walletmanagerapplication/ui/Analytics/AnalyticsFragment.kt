@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.github.mikephil.charting.utils.MPPointF
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -97,6 +98,7 @@ class AnalyticsFragment @Inject constructor() : Fragment(R.layout.fragment_analy
 
         //populating the colors and data
         ourSet.colors = pieShades
+
         ourPieChart.data=data
         //setting color and size of text
         data.setValueTextColor(Color.WHITE)
@@ -117,7 +119,7 @@ class AnalyticsFragment @Inject constructor() : Fragment(R.layout.fragment_analy
         ourPieChart.legend.horizontalAlignment = Legend.LegendHorizontalAlignment.LEFT
         ourPieChart.legend.isWordWrapEnabled = true
 
-        ourPieChart.centerText = "Transaction Amounts"
+        ourPieChart.centerText = "Amounts"
         ourPieChart.isDrawHoleEnabled = true
 
         ourPieChart.setTransparentCircleColor(Color.WHITE)
