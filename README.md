@@ -19,26 +19,23 @@ A wallet manager app can help you answer these questions
 
 ### Core
 
-* %100 [Kotlin](https://kotlinlang.org/)
-* MVVM (Model - View - ViewModel)
-* Kotlin Coroutines
-* Kotlin Flow
-* Dependency Injection (Dagger Hilt)
-* Navigation Component
-* Live Data 
+* [Kotlin](https://kotlinlang.org/)
+* [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) (Model - View - ViewModel)
+* [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
+* [Kotlin Flow](https://kotlinlang.org/docs/flow.html)
+* [Dependency Injection](https://developer.android.com/training/dependency-injection) (Dagger Hilt)
+* [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
+* [Live Data](https://developer.android.com/topic/libraries/architecture/livedata)
 
 ### Local Persistence
 
-* Room Database (SQLite ORM)
+* [Room Database](https://developer.android.com/training/data-storage/room) (SQLite ORM)
 
 ### Other
 
-* MPAndroidChart
-* Glide
+* [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)
+* [Glide](https://github.com/bumptech/glide)
 
-### CI/CD
-
-* Github Actions (CI/CD)
 
 ### How to build?
 
