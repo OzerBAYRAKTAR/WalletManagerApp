@@ -13,15 +13,15 @@ Wallet Manager app as a manual expense tracker that will replace the good old sp
 
 A wallet manager app can help you answer these questions
 ## 📷 Screenshots 
-![111](https://user-images.githubusercontent.com/105236639/215442392-293c67d0-a440-4380-88f8-ce25d50cf516.png)
-![İKİ](https://user-images.githubusercontent.com/105236639/215442212-2736b34a-7a2d-46d5-b470-da965bed27f6.png)
-![333](https://user-images.githubusercontent.com/105236639/215443088-0aad3a0d-400c-467b-be47-32c703bf21dc.png)
-![444](https://user-images.githubusercontent.com/105236639/215443101-56fe99ee-789c-4833-aa62-9089388fae95.png)
-![666](https://user-images.githubusercontent.com/105236639/215443123-f24b98d1-5c69-482f-ad9d-662999f61984.png)
-![555](https://user-images.githubusercontent.com/105236639/215443109-6e58afe7-ffd6-40dc-b1f5-fc13463da713.png)
-![888](https://user-images.githubusercontent.com/105236639/215443132-67ab335a-e5ab-40d0-b732-db01292cfe27.png)
-![777](https://user-images.githubusercontent.com/105236639/215443128-089cffbd-4d4f-4f3a-b91c-423c7be4e1e0.png)
 
+![11](https://user-images.githubusercontent.com/105236639/215586500-1405e7f8-b206-451c-88f6-f78cfd7cc056.png)
+![22](https://user-images.githubusercontent.com/105236639/215586509-ae329636-b92e-402d-ab56-f453e7445c2f.png)
+![33](https://user-images.githubusercontent.com/105236639/215586516-d9c1c683-7b9a-4456-9278-e4346a2915a2.png)
+![44](https://user-images.githubusercontent.com/105236639/215586528-69691d8f-36db-42d0-9f35-d884567dfbf6.png)
+![88](https://user-images.githubusercontent.com/105236639/215586557-da5df562-abea-4335-a96c-5dc6922bc47c.png)
+![666](https://user-images.githubusercontent.com/105236639/215586545-201c14d5-9ab9-4e46-b7b7-1293638d7657.png)
+![55](https://user-images.githubusercontent.com/105236639/215586534-0bf05e6d-810a-4038-bdee-73ea85fed7c0.png)
+![77](https://user-images.githubusercontent.com/105236639/215586550-8bfb88ce-ec73-4b39-b3cf-e3a22ab26867.png)
 
 
   
