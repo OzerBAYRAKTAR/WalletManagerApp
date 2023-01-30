@@ -19,7 +19,7 @@ A wallet manager app can help you answer these questions
 
 ### Core
 
-* %100 Kotlin
+* %100 [Kotlin](https://kotlinlang.org/)
 * MVVM (Model - View - ViewModel)
 * Kotlin Coroutines
 * Kotlin Flow
